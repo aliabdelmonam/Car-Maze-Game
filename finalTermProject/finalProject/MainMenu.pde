@@ -29,7 +29,7 @@ text("Game",110,250);
 if (dist(mouseX, mouseY, 200, 400) < 50) { // Hover detection for Play button
     fill(buttonColorAfterHover);
     if(mousePressed && mouseButton == LEFT){
-     gameState = 1;
+     gameState = 2;
     }  
 } else {
     fill(buttonColor); // Full opacity

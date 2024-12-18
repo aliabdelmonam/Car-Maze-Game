@@ -1,5 +1,5 @@
 class Car{
-private float carX, carY; // Car position
+ float carX, carY; // Car position
  float carSpeed; // Current speed
  float carAngle; // Orientation (angle in radians)
  float acceleration; // How fast the car accelerates
@@ -12,7 +12,9 @@ private float carX, carY; // Car position
  color roadColor;
  color finishingLineColor;
  color parkingTextColor;
-
+ int destinationX;
+ int destinationYmin;
+  int destinationYmax;
 Car(float carX,float carY,color roadColor, color finishingLineColor,color parkingTextColor){
 //intializing some variables 
 this.carX = carX;
@@ -30,6 +32,9 @@ this.finishingLineColor =finishingLineColor;
 this.parkingTextColor = parkingTextColor;
 //loading car image
   this.carImage = loadImage("car.png");
+  this.destinationX=1010;
+  this.destinationYmin=470;
+  this.destinationYmax=560;
 
 }
 
@@ -104,7 +109,7 @@ public boolean checkCollision() {
   return false;
 }
 
-
+/*
 public boolean checkWining() {
   // Get the color at the car's position
   color tl = get((int) (carX - cos(carAngle) * ((carWidth-5)/2) - sin(carAngle) * ((carHeight-5)/2)), (int) (carY - sin(carAngle) * ((carWidth-5)/2) + cos(carAngle) * ((carHeight-5)/2)));
@@ -120,6 +125,17 @@ public boolean checkWining() {
   return true;
   else 
   return false;
+}*/
+
+public boolean checkWining(){
+ boolean xOverlap = (carX + carWidth >= destinationX && carX <= destinationX);
+
+  // Check if the car's y-coordinate is within the range of the line
+  boolean yOverlap = (carY + carHeight >= destinationYmin && carY <= destinationYmax);
+
+  // If both x and y conditions are true, the car has reached the line
+  return xOverlap && yOverlap;
 }
+
 
 }
