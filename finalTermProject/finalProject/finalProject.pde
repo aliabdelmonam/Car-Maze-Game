@@ -10,7 +10,7 @@ MainMenu mainMenu;
 Info infoPage;
 void setup() {
 size(1080, 700);
-level1 = new Level1();
+level1 = new Level1(this);
 mainMenu = new MainMenu(700);
 infoPage = new Info(700);
 }

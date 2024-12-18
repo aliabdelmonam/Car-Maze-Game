@@ -11,12 +11,13 @@ private PImage houseTwo;
 private PFont levelFont;
 private PFont boldFont;
 private Car carObject;
+private GameSoundManager soundManager; // Declare the object
+//private PApplet parent;
 private int timerWhileWining;
-
-
-Level1(){
+Level1(PApplet parent){
   //intializing some variables
 this.carObject = new Car(70,100,color(150,150,150),color(255,0,0),color(255,255,255));
+this.soundManager = new GameSoundManager(parent);
 this.roadWidth = 70;
 this.roadColor = color(150,150,150);
 
@@ -127,11 +128,12 @@ public void playGame(){
     textSize(100);
     text("You won:)", width/2-250, height/2);
     fill(0, 0, 0);
+    this.soundManager.playWinSound();
   //waiting for 4 seconds before closing the game after wining
  if (timerWhileWining == 0) {
     timerWhileWining = millis();
   }
-  if (millis() - timerWhileWining >= 2000) {
+  if (millis() - timerWhileWining >= 5000) {
     exit();
   }
   
@@ -145,6 +147,7 @@ public void playGame(){
     textSize(25);
     text("Collision!", 10, 25);
     fill(0, 0, 0);
+    this.soundManager.playCrashSound();
   }
  }
  this.carObject.drawCar();
