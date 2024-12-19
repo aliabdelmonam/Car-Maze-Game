@@ -28,7 +28,7 @@ text("Car-Maze Game",60,180);
 
 //buttons
 //first one
-if (dist(mouseX, mouseY, 200, 400) < 50) { // Hover detection for Play button
+if (dist(mouseX, mouseY, 200, 300) < 50) { // Moved up to 300
     fill(buttonColorAfterHover);
     if(mousePressed && mouseButton == LEFT){
      gameState = 1;
@@ -36,10 +36,10 @@ if (dist(mouseX, mouseY, 200, 400) < 50) { // Hover detection for Play button
 } else {
     fill(buttonColor); // Full opacity
   }
-ellipse(200,400,210,90);
+ellipse(200,300,210,90);
 
  //second one
- if (dist(mouseX, mouseY, 200, 510) < 50) { // Hover detection for Info button
+ if (dist(mouseX, mouseY, 200, 400) < 50) { // 100 pixels margin
     fill(buttonColorAfterHover); // 50% opacity
      if(mousePressed && mouseButton == LEFT){
        gameState = 2;
@@ -47,10 +47,21 @@ ellipse(200,400,210,90);
   } else {
     fill(buttonColor); // Full opacity
   }
-ellipse(200,510,210,90);
+ellipse(200,400,210,90);
 
  //Third one
- if (dist(mouseX, mouseY, 200, 620) < 50) { // Hover detection for Info button
+ if (dist(mouseX, mouseY, 200, 500) < 50) { // 100 pixels margin
+    fill(buttonColorAfterHover); // 50% opacity
+     if(mousePressed && mouseButton == LEFT){
+       gameState = 3;
+    }  
+  } else {
+    fill(buttonColor); // Full opacity
+  }
+ellipse(200,500,210,90);
+
+ //Fourth one (Info)
+ if (dist(mouseX, mouseY, 200, 600) < 50) { // 100 pixels margin
     fill(buttonColorAfterHover); // 50% opacity
      if(mousePressed && mouseButton == LEFT){
        gameState = -1;
@@ -58,16 +69,17 @@ ellipse(200,510,210,90);
   } else {
     fill(buttonColor); // Full opacity
   }
-ellipse(200,620,210,90);
+ellipse(200,600,210,90);
 
 
 //buttons text
 textFont(this.buttonFont);
   fill(buttonTextColor);
   textSize(50);
-  text("Level-1",150, 415); 
-  text("Level-2",150, 525); 
-  text("Info",170, 635); 
+  text("Level-1",150, 315); // Adjusted text positions
+  text("Level-2",150, 415);
+  text("Level-3",150, 515);
+  text("Info",170, 615);
   fill(0);
 }
 
