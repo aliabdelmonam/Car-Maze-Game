@@ -7,6 +7,7 @@ class GameSoundManager {
     private SoundFile carBoomSound;
     private SoundFile carCoinSound;
     private SoundFile carLoseSound;
+    private SoundFile carKeySound;
     // Reference to parent sketch
     private PApplet parent;
     
@@ -27,9 +28,10 @@ class GameSoundManager {
         try {
             carCrashSound = new SoundFile(parent, "collision.mp3");
             carWinSound = new SoundFile(parent, "win.mp3");
-            //carBoomSound = new SoundFile(parent,"Boom.mp3");
+            carBoomSound = new SoundFile(parent,"Boom.mp3");
             carCoinSound = new SoundFile (parent,"coin.mp3");
             carLoseSound = new SoundFile (parent,"lose1.mp3");
+            carKeySound  = new SoundFile (parent,"key.mp3");
         } catch (Exception e) {
             parent.println("Error loading sound files: " + e.getMessage());
         }
@@ -37,9 +39,12 @@ class GameSoundManager {
     
     // Check if any sound is currently playing
     private boolean isAnySoundPlaying() {
-         return (carCoinSound.isPlaying() ||
-                 carWinSound.isPlaying()  ||
-                 carCrashSound.isPlaying());
+         return (carCoinSound.isPlaying()  ||
+                 carWinSound.isPlaying()   ||
+                 carCrashSound.isPlaying() ||
+                 carKeySound.isPlaying()   ||
+                 carBoomSound.isPlaying()  ||
+                 carLoseSound.isPlaying()   );
     }
     
     // Play crash sound
@@ -63,16 +68,22 @@ class GameSoundManager {
             carLoseSound.amp(masterVolume);
         }
     }
+    public void playKeySound() {
+        if (carKeySound != null && !isAnySoundPlaying()) {
+            carKeySound.play(3);
+            carKeySound.amp(masterVolume);
+        }
+    }
 
-   /* public void playBoomSound() {
+    public void playBoomSound() {
         if (carBoomSound != null && !isAnySoundPlaying()) {
             carBoomSound.play();
             carBoomSound.amp(.1);
         }
-    }*/
+    }
     
     // Stop all sounds
-    /*public void stopAllSounds() {
+    public void stopAllSounds() {
         if (carCrashSound != null && carCrashSound.isPlaying()) {
             carCrashSound.stop();
         }
@@ -82,7 +93,16 @@ class GameSoundManager {
         if (carBoomSound != null && carBoomSound.isPlaying()) {
             carBoomSound.stop();
         }
-    }*/
+         if (carCoinSound != null && carCoinSound.isPlaying()) {
+            carCoinSound.stop();
+        }
+         if (carKeySound != null && carKeySound.isPlaying()) {
+            carKeySound.stop();
+        }
+        if (carLoseSound != null && carLoseSound.isPlaying()) {
+            carLoseSound.stop();
+        }
+    }
     public void playCoinSound(){
         if (carCoinSound != null && !isAnySoundPlaying()) {
             carCoinSound.play();
