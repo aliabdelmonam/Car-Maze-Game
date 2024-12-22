@@ -240,7 +240,7 @@ public void playGame(){
             
             // Reset key if it was collected
             flagkey = 0;
-            
+            fuelLevel =100;
             // Show boom and message
             image(this.boom, this.carObject.carX - 30, this.carObject.carY - 30, 60, 60);
             fill(255, 0, 0);
